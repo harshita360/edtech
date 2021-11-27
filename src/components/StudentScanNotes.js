@@ -3,6 +3,7 @@ import React from "react";
 import { getFirestore } from "redux-firestore";
 import { connect } from "react-redux";
 import avatar from "../avatar.png";
+import moment from "moment";
 
 class DoubtPortal extends React.Component {
   state = {
@@ -41,12 +42,22 @@ class DoubtPortal extends React.Component {
         <div
           className="ui raised card"
           key={elem.teacher_email}
-          style={{ height: "10%", width: "25%" }}
+          style={{ height: "12%", width: "25%" }}
         >
           <div className="content" style={{ color: "black" }}>
-            <img className="ui avatar image" src={avatar} alt="img" />{" "}
+            <i
+              className="big user circle icon"
+              style={{ color: "#6c63ff" }}
+            ></i>
+            <br />
             <b>{elem.teacher_email}</b>
+            <div class="metadata" style={{ color: "black" }}>
+              <span class="date">
+                {moment(elem.createdAt.toDate()).calendar()}
+              </span>
+            </div>
           </div>
+
           <div className="image">
             <img src={elem.qrUrl} alt="img" />
           </div>
@@ -59,7 +70,6 @@ class DoubtPortal extends React.Component {
                 </span>
               </h6>
             </div>
-            <div className="description">{elem.createdAt.seconds}</div>
           </div>
         </div>
       );

@@ -3,6 +3,7 @@ import React from "react";
 import { getFirestore } from "redux-firestore";
 import { connect } from "react-redux";
 import doubt1 from "../doubt2.svg";
+import moment from "moment";
 
 class DoubtPortal extends React.Component {
   state = {
@@ -135,6 +136,8 @@ class DoubtPortal extends React.Component {
                   {" "}
                   {elem.firstname}&nbsp;{elem.lastname}
                 </u>
+                &nbsp;&nbsp;&nbsp; &nbsp;
+                {moment(elem.createdAt.toDate()).calendar()}
               </h5>
             </div>
             <div className="metadata">
