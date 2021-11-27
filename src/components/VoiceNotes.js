@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import notes1 from "../notes1.svg";
 import "./css/Notes.css";
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -113,13 +113,16 @@ function VoiceNotes(props) {
           <div className="six wide column">
             {isListening ? (
               <span>
-                <i class=" large microphone icon"></i>
+                <i
+                  class=" large microphone icon"
+                  style={{ color: "white" }}
+                ></i>
               </span>
             ) : (
               <span>
                 🛑️
                 <i
-                  class=" large microphone icon"
+                  className=" large microphone icon"
                   style={{ color: "white" }}
                 ></i>
               </span>
@@ -144,7 +147,7 @@ function VoiceNotes(props) {
             </div>
             <br />
             <br />
-            <p>{note}</p>
+            <p style={{ color: "white" }}>{note}</p>
           </div>
 
           <div
@@ -156,7 +159,7 @@ function VoiceNotes(props) {
             }}
           >
             <h2>
-              <i class="large edit icon"></i>
+              <i className="large edit icon"></i>
             </h2>
 
             {savedNotes.map((n) => (
@@ -166,7 +169,7 @@ function VoiceNotes(props) {
             <br />
 
             <button
-              class="ui right floated button"
+              className="ui right floated button"
               onClick={jsPdfGenerate}
               style={{ backgroundColor: "#2F2E41", color: "white" }}
             >

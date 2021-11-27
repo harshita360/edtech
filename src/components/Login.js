@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { signIn } from "../actions/authActions";
 import login3 from "../login3.svg";
 import { Redirect } from "react-router-dom";
+//import history from "../history";
 
 class Login extends React.Component {
   state = {
@@ -10,24 +11,42 @@ class Login extends React.Component {
     password: "",
   };
 
-  handleSignIn = (e) => {
-    e.preventDefault();
+  handleSignIn = () => {
+    //  e.preventDefault();
     //console.log(this.state);
-    this.props.signIn(this.state);
+    // this.props
+    //   .signIn(this.state)
+    //   .then(() => {
+    //     history.push("/");
+    //   })
+    //   .catch((err) => {
+    //     console.log("error while signing in");
+    //   });
+    if (this.state.email === "" || this.state.password === "")
+      alert("You have to enter credentials");
+    else {
+      this.props.signIn(this.state);
+    }
+
     //console.log(this.state);
   };
   render() {
     //console.log(this.props);
     const auth = this.props.auth;
+    const authError = this.props.authError;
+    if (auth.uid) return <Redirect to="/" />;
 
     return (
       <div className="ui container" style={{ margin: "6%" }}>
         <div className="ui stackable grid">
           <div className="six wide column">
             <center>
-              <i class="huge user circle icon" style={{ color: "white" }}></i>
+              <i
+                className="huge user circle icon"
+                style={{ color: "white" }}
+              ></i>
             </center>
-            <form className="ui inverted form">
+            <div className="ui inverted form">
               <div className="field">
                 <br />
                 <br />
@@ -53,12 +72,7 @@ class Login extends React.Component {
                   onChange={(e) => this.setState({ password: e.target.value })}
                 />
               </div>
-              <div className="field">
-                <div className="ui checkbox">
-                  <input type="checkbox" className="hidden" />
-                  <label>I agree to the Terms and Conditions</label>
-                </div>
-              </div>
+              <br />
               <button
                 className="ui large secondary button"
                 type="submit"
@@ -67,7 +81,13 @@ class Login extends React.Component {
               >
                 Submit
               </button>
-            </form>
+              <br />
+              <div>
+                {authError ? (
+                  <p style={{ color: "yellow" }}>{authError}</p>
+                ) : null}
+              </div>
+            </div>
           </div>
           <div className="ten wide column">
             <div className="ui six column centered grid">

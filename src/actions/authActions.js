@@ -36,6 +36,13 @@ export const signUp = (newUser) => {
       .auth()
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then((res) => {
+        const role_arr = newUser.email.split("@");
+        const role = role_arr[1];
+        var x = false;
+        if (role === "teacher.com") {
+          x = true;
+        }
+
         return firestore
           .collection("users")
           .doc(res.user.uid)
@@ -43,6 +50,7 @@ export const signUp = (newUser) => {
             firstname: newUser.firstname,
             lastname: newUser.lastname,
             initials: newUser.firstname[0] + newUser.lastname[0],
+            isAdmin: x,
           });
       })
       .then(() => {

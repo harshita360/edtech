@@ -7,6 +7,7 @@ import rootReducer from "./reducers/rootReducer";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { reduxFireStore, getFirestore } from "redux-firestore";
+//import { reduxFireStore, getFirestore } from "redux-firestore";
 //import { getFirestore } from "redux-firestore";
 import { getFirebase } from "react-redux-firebase";
 import firebaseConfig from "./config/firebaseConfig";
@@ -15,6 +16,15 @@ import firebase from "firebase/compat/app";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import { createFirestoreInstance } from "redux-firestore";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { isLoaded } from "react-redux-firebase";
+import { useSelector } from "react-redux";
+
+function AuthIsLoaded({ children }) {
+  const auth = useSelector((state) => state.firebase.auth);
+  if (!isLoaded(auth)) return <div> Loading...</div>;
+  return children;
+}
+
 // const store = createStore(
 //   rootReducer,
 //   compose(
@@ -92,17 +102,12 @@ const rrfProps = {
 ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
-      <App />
+      <AuthIsLoaded>
+        <App />
+      </AuthIsLoaded>
     </ReactReduxFirebaseProvider>
   </Provider>,
   document.querySelector("#root")
 );
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <ReactReduxFirebaseProvider {...rrfProps}>
-//       <App />
-//     </ReactReduxFirebaseProvider>
-//   </Provider>,
-//   document.getElementById("root")
-// );
+
 reportWebVitals();

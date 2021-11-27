@@ -1,5 +1,5 @@
 import React from "react";
-import { getFirebase } from "react-redux-firebase";
+//mport { getFirebase } from "react-redux-firebase";
 import { getFirestore } from "redux-firestore";
 import { connect } from "react-redux";
 import avatar from "../avatar.png";
@@ -8,10 +8,13 @@ class DoubtPortal extends React.Component {
   state = {
     qrcodes: null,
   };
+  componentDidMount() {
+    this.fetchQrcodes();
+  }
 
   fetchQrcodes = () => {
     const firestore = getFirestore();
-    var list = [];
+
     firestore
       .collection("classnotes")
       .get()
@@ -38,21 +41,25 @@ class DoubtPortal extends React.Component {
         <div
           className="ui raised card"
           key={elem.teacher_email}
-          style={{ height: "20%", width: "25%" }}
+          style={{ height: "10%", width: "25%" }}
         >
-          <div class="content">
-            <div class="right floated meta">14h</div>
-            <img class="ui avatar image" src={avatar} /> {elem.teacher_email}
+          <div className="content" style={{ color: "black" }}>
+            <img className="ui avatar image" src={avatar} alt="img" />{" "}
+            <b>{elem.teacher_email}</b>
           </div>
           <div className="image">
             <img src={elem.qrUrl} alt="img" />
           </div>
-          <div class="content">
-            <a class="header">{elem.subject}</a>
-            <div class="meta">
-              <span class="date">{elem.module}</span>
+          <div className="content">
+            <div className="header">{elem.subject}</div>
+            <div className="meta">
+              <h6>
+                <span className="date">
+                  <b> Module:{elem.module}</b>
+                </span>
+              </h6>
             </div>
-            <div class="description">{elem.createdAt.seconds}</div>
+            <div className="description">{elem.createdAt.seconds}</div>
           </div>
         </div>
       );
@@ -65,15 +72,21 @@ class DoubtPortal extends React.Component {
       <div className="ui container" style={{ marginTop: "2%", color: "white" }}>
         <br />
         <br />
+        <a href="/">
+          <button
+            className="ui big right floated button"
+            style={{ backgroundColor: "#6c63ff", color: "white" }}
+          >
+            {" "}
+            Back To DashBoard
+          </button>
+        </a>
         <div className="ui three stackable cards">
           {this.state.qrcodes ? this.renderQrCodes() : null}
         </div>
         <br />
         <br />
-        <button className="ui button" onClick={this.fetchQrcodes}>
-          {" "}
-          GET QR
-        </button>
+
         <br />
         <br />
       </div>
@@ -83,6 +96,7 @@ class DoubtPortal extends React.Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
+    profile: state.firebase.profile,
   };
 };
 

@@ -1,27 +1,27 @@
 import React from "react";
-import { connect } from "react-redux";
+//import { connect } from "react-redux";
 
 class SingedOutLinks extends React.Component {
   render() {
     return (
-      <div class="ui inverted stackable large menu">
-        <div class="item">
-          <i class="big book icon" style={{ color: "white" }}></i>
+      <div className="ui inverted stackable large menu">
+        <div className="item">
+          <a class="item" href="/">
+            <i className="big book icon" style={{ color: "white" }}></i>
+          </a>
         </div>
-        <a href="/login" class="item">
+        <a href="/login" className="item">
           Teachers
         </a>
-        <a href="/login" class="item">
+        <a href="/login" className="item">
           Students
         </a>
-        <a href="/#" class="item">
-          Help
-        </a>
-        <div class="right menu">
-          <a href="/#" class="item">
+
+        <div className="right menu">
+          <a href="/signup" className="item">
             Sign Up
           </a>
-          <a href="/login" class="item">
+          <a href="/login" className="item">
             Sign In
           </a>
         </div>

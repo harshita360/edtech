@@ -3,22 +3,16 @@ import QRCode from "qrcode";
 import { connect } from "react-redux";
 import { createQr } from "../actions/teacherActions";
 import qrImg from "../qrimg2.svg";
+import history from "../history";
 class TeacherQrGenerate extends React.Component {
   state = {
     input: "",
     imgUrl: "",
     subject: "",
     module: "",
+    error: "",
   };
-  // getQrcode = async () => {
-  //   try {
-  //     const response = await QRCode.toDataURL(this.state.input);
-  //     console.log(response);
-  //     this.setState({ imgUrl: response });
-  //   } catch (error) {
-  //     console.log("error occurred");
-  //   }
-  // };
+
   getQrcode = () => {
     QRCode.toDataURL(this.state.input)
       .then((response) => {
@@ -26,19 +20,23 @@ class TeacherQrGenerate extends React.Component {
         this.setState({ imgUrl: response });
       })
       .catch((err) => {
-        console.log("error occured");
+        this.setState({ error: err });
+        alert("Sorry something went wrong...please try again");
+        //console.log("error occured");
       });
   };
-  qrUpload = () => {
+  qrUpload = async () => {
     console.log("file upload");
-    this.props.createQr(this.state);
+    await this.props.createQr(this.state);
+    alert("sucessfull");
+    history.push("/");
   };
 
   showUploadModal = () => {
     return (
       <div className="ui six column grid">
         <div className="ui inverted form">
-          <div class="field">
+          <div className="field">
             <br />
             <br />
             <label>
@@ -52,7 +50,7 @@ class TeacherQrGenerate extends React.Component {
             />
           </div>
           <br />
-          <div class="field">
+          <div className="field">
             <label>
               <h5>Module No.</h5>
             </label>
@@ -63,17 +61,17 @@ class TeacherQrGenerate extends React.Component {
               onChange={(e) => this.setState({ module: e.target.value })}
             />
           </div>
-          <br />
-          <a href={this.state.imgUrl}>
+
+          <a href="/">
             <button
-              class="ui large left attached button"
+              className="ui large left attached button"
               style={{ backgroundColor: "#6C63FF", color: "white" }}
             >
-              Download
+              Cancel
             </button>
           </a>
           <button
-            class="right attached ui large button"
+            className="right attached ui large button"
             style={{ backgroundColor: "white" }}
             onClick={this.qrUpload}
           >
@@ -110,7 +108,7 @@ class TeacherQrGenerate extends React.Component {
             <br />
             <br />
             <button
-              class="ui right labeled icon button"
+              className="ui right labeled icon button"
               onClick={this.getQrcode}
               style={{
                 backgroundColor: "#6C63FF",
@@ -118,7 +116,7 @@ class TeacherQrGenerate extends React.Component {
                 margin: "1%",
               }}
             >
-              <i class="right arrow icon"></i>
+              <i className="right arrow icon"></i>
               GENERATE QR CODE
             </button>
             <br />
@@ -137,6 +135,11 @@ class TeacherQrGenerate extends React.Component {
               style={{ width: "95%", height: "95%", margin: "8%" }}
             />
           </div>
+        </div>
+        <div>
+          {this.state.error ? (
+            <p style={{ color: "white" }}>{this.state.error}</p>
+          ) : null}
         </div>
       </div>
     );

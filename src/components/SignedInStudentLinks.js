@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { signOut } from "../actions/authActions";
 
-class SignedInLinks extends React.Component {
+class SignedInStudentLinks extends React.Component {
   render() {
-    //console.log(this.props);
+    console.log(this.props);
     return (
       <div className="ui inverted stackable large menu">
         <div className="item">
@@ -13,12 +13,17 @@ class SignedInLinks extends React.Component {
           </a>
         </div>
 
-        <a href="/teacher/qr" className="item">
-          Upload Notes
+        <a href="/notes" className="item">
+          Record and Save
         </a>
-
+        <a href="/student/qr" className="item">
+          Scan Notes
+        </a>
+        <a href="/doubt" className="item">
+          DoubtNut
+        </a>
         <div className="right menu">
-          <a onClick={this.props.signOut} class="item" href="/">
+          <a onClick={this.props.signOut} className="item" href="/">
             Sign Out
           </a>
         </div>
@@ -33,4 +38,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignedInLinks);
+export default connect(null, mapDispatchToProps)(SignedInStudentLinks);

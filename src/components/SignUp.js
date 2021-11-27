@@ -2,6 +2,8 @@ import React from "react";
 import signup2 from "../signup2.svg";
 import { signUp } from "../actions/authActions";
 import { connect } from "react-redux";
+//import history from "../history";
+import { Redirect } from "react-router-dom";
 
 class SignUp extends React.Component {
   state = {
@@ -13,11 +15,22 @@ class SignUp extends React.Component {
 
   handleSignUp = (e) => {
     e.preventDefault();
-    this.props.signUp(this.state);
+    if (
+      this.state.firstname === "" ||
+      this.state.lastname === "" ||
+      this.state.email === "" ||
+      this.state.password === ""
+    ) {
+      alert("Please enter all credentials");
+    } else {
+      this.props.signUp(this.state);
+    }
   };
   render() {
     //  console.log(this.props.auth);
     const authError = this.props.authError;
+    const auth = this.props.auth;
+    if (auth.uid) return <Redirect to="/" />;
     return (
       <div
         className="ui container"
@@ -28,14 +41,17 @@ class SignUp extends React.Component {
         <div className="ui stackable grid">
           <div className="ui six wide column">
             <center>
-              <i class="huge user circle icon" style={{ color: "#6C63FF" }}></i>
+              <i
+                className="huge user circle icon"
+                style={{ color: "#6C63FF" }}
+              ></i>
             </center>
             <br />
             <br />
             <form className="ui inverted form">
-              <div class="field">
-                <div class="two fields">
-                  <div class="field">
+              <div className="field">
+                <div className="two fields">
+                  <div className="field">
                     <label>First Name</label>
                     <input
                       type="text"
@@ -46,7 +62,7 @@ class SignUp extends React.Component {
                       }
                     />
                   </div>
-                  <div class="field">
+                  <div className="field">
                     <label>Last Name</label>
                     <input
                       type="text"
@@ -58,14 +74,14 @@ class SignUp extends React.Component {
                     />
                   </div>
                 </div>
-                <div class="field">
+                <div className="field">
                   <label>Email ID</label>
                   <input
                     type="text"
                     onChange={(e) => this.setState({ email: e.target.value })}
                   />
                 </div>
-                <div class="field">
+                <div className="field">
                   <label>Password</label>
 
                   <input
@@ -78,16 +94,19 @@ class SignUp extends React.Component {
                 <br />
                 <center>
                   <button
-                    class="ui right labeled icon large button"
+                    className="ui right labeled icon large button"
                     onClick={this.handleSignUp}
                     style={{ backgroundColor: "#3F3D56", color: "white" }}
                   >
-                    <i class="right arrow icon"></i>
+                    <i className="right arrow icon"></i>
                     SignUp
                   </button>
                 </center>
-                <div style={{ color: "white" }}>
-                  {authError ? <p>{authError}</p> : null}
+                <br />
+                <div style={{ color: "yellow" }}>
+                  {authError ? (
+                    <p style={{ color: "white" }}>{authError}</p>
+                  ) : null}
                 </div>
               </div>
             </form>
@@ -113,6 +132,7 @@ class SignUp extends React.Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
+    authError: state.auth.authError,
   };
 };
 

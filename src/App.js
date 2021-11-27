@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "./components/Login";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import DashBoard from "./components/DashBoard";
 import VoiceNotes from "./components/VoiceNotes";
 import Navbar from "./components/Navbar";
@@ -8,6 +8,7 @@ import TeacherQrGenerate from "./components/TeacherQrGenerate";
 import SignUp from "./components/SignUp";
 import DoubtPortal from "./components/DoubtPortal";
 import StudentScanNotes from "./components/StudentScanNotes";
+import history from "./history";
 
 class App extends React.Component {
   render() {
@@ -15,9 +16,10 @@ class App extends React.Component {
       <div>
         <Navbar />
 
-        <BrowserRouter>
+        <Router history={history}>
           <Switch>
             <Route exact path="/" component={DashBoard} />
+            <Route exact path="/dashboard" component={DashBoard} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/notes" component={VoiceNotes} />
             <Route exact path="/teacher/qr" component={TeacherQrGenerate} />
@@ -25,7 +27,7 @@ class App extends React.Component {
             <Route exact path="/doubt" component={DoubtPortal} />
             <Route exact path="/student/qr" component={StudentScanNotes} />
           </Switch>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }

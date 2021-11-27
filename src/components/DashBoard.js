@@ -9,15 +9,15 @@ class DashBoard extends React.Component {
     console.log(this.props);
     return (
       <div style={{ color: "white" }}>
-        <div class="pusher">
+        <div className="pusher">
           <div
-            class="ui inverted vertical masthead center aligned segment"
+            className="ui inverted vertical masthead center aligned segment"
             style={{ backgroundColor: "#6C63FF" }}
           >
             >
-            <div class="ui text container">
+            <div className="ui text container">
               <h1
-                class="ui inverted header"
+                className="ui inverted header"
                 style={{
                   fontWeight: "800",
 
@@ -26,145 +26,125 @@ class DashBoard extends React.Component {
               >
                 Ed-Surge
               </h1>
-              <h2>A place where learning becomes easy...</h2>
+              <h3>A place where learning becomes easy...</h3>
               <br />
-              <div
-                class="ui huge primary button"
-                style={{ backgroundColor: "white", color: "black" }}
-              >
-                <Link to="/login">
-                  {" "}
-                  Get Started <i class="right arrow icon"></i>
-                </Link>
+              <h2>One Platform, Many Solutions</h2>
+              <div>
+                {this.props.auth.uid ? null : (
+                  <Link
+                    to="/login"
+                    className="ui huge primary button"
+                    style={{ backgroundColor: "white", color: "black" }}
+                  >
+                    {" "}
+                    Get Started <i className="right arrow icon"></i>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
 
-          <div class="ui vertical stripe segment">
-            <div class="ui middle aligned stackable grid container">
-              <div class="row">
-                <div class="eight wide column">
-                  <h3 class="ui header" style={{ color: "#6C63FF" }}>
+          <div className="ui vertical stripe segment">
+            <div className="ui middle aligned stackable grid container">
+              <div className="row">
+                <div className="eight wide column">
+                  <h3 className="ui header" style={{ color: "#6C63FF" }}>
                     We Help You Personalize Your Learning
                   </h3>
                   <p>
-                    We can give your company superpowers to do things that they
-                    never thought possible. Let us delight your customers and
-                    empower your needs...through pure data analytics.
+                    EdSurge knows what it takes to support your classes every
+                    day and to give you your time back.One Platform with Many
+                    Solutions
                   </p>
-                  <h3 class="ui header" style={{ color: "#6C63FF" }}>
+                  <h3 className="ui header" style={{ color: "#6C63FF" }}>
                     We Make Communication Easy
                   </h3>
                   <p>
-                    Yes that's right, you thought it was the stuff of dreams,
-                    but even bananas can be bioengineered.
+                    We’re constantly improving our integrations to ensure a
+                    smooth and seamless workflow for all.
                   </p>
                 </div>
-                <div class="six wide right floated column">
+                <div className="six wide right floated column">
                   <img
                     src={home1}
-                    class="ui large bordered rounded image"
+                    className="ui large bordered rounded image"
                     alt="img"
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="center aligned column">
-                  <a
-                    href="/#"
-                    class="ui huge button"
+              <div className="row">
+                <div className="center aligned column">
+                  <div
+                    className="ui huge button"
                     style={{ backgroundColor: "#6C63FF", color: "white" }}
                   >
                     Check Them Out
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="ui vertical stripe quote segment">
-            <div class="ui equal width stackable internally celled grid">
-              <div class="center aligned row">
-                <div class="column">
+          <div className="ui vertical stripe quote segment">
+            <div className="ui equal width stackable internally celled grid">
+              <div className="center aligned row">
+                <div className="column">
                   <h3>"Amazing Platform"</h3>
                   <p>That is what they all say about us</p>
                 </div>
-                <div class="column">
-                  <h3>"I shouldn't have gone with their competitor."</h3>
-                  <p>
-                    <img src="" class="ui avatar image" alt="img" /> <b>Nan</b>{" "}
-                    Chief Fun Officer Acme Toys
-                  </p>
+                <div className="column">
+                  <h3>"Focus on learning wins.One Platform Many Solutions"</h3>
+                  <p></p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="ui vertical stripe segment">
-            <div class="ui text container">
-              <h3 class="ui header" style={{ color: "white" }}>
+          <div className="ui vertical stripe segment">
+            <div className="ui text container">
+              <h3 className="ui header" style={{ color: "white" }}>
                 Breaking The Grid, Grabs Your Attention
               </h3>
               <p style={{ color: "#6C63FF" }}>
-                Instead of focusing on content creation and hard work, we have
-                learned how to master the art of doing nothing by providing
-                massive amounts of whitespace and generic content that can seem
-                massive, monolithic and worth your attention.
+                Built by educators, EdSurge knows what it takes to support your
+                classes every day and to give you your time back.Make learning
+                fun. Enjoy discussions and learn together.
               </p>
-              <a
-                href="/#"
-                class="ui large button"
-                style={{ backgroundColor: "white" }}
+              <div
+                className="ui big button"
+                style={{ backgroundColor: "white", color: "black" }}
               >
                 Read More
-              </a>
-              <h4 class="ui horizontal header divider"></h4>
+              </div>
             </div>
           </div>
 
-          <div class="ui inverted vertical footer segment">
-            <div class="ui container">
-              <div class="ui stackable inverted divided equal height stackable grid">
-                <div class="three wide column">
-                  <h4 class="ui inverted header">About</h4>
-                  <div class="ui inverted link list">
-                    <a href="/#" class="item">
-                      Sitemap
-                    </a>
-                    <a href="/#" class="item">
-                      Contact Us
-                    </a>
-                    <a href="/#" class="item">
-                      Religious Ceremonies
-                    </a>
-                    <a href="/#" class="item">
-                      Gazebo Plans
-                    </a>
+          <div className="ui inverted vertical footer segment">
+            <div className="ui container">
+              <div className="ui stackable inverted divided equal height stackable grid">
+                <div className="three wide column">
+                  <h4 className="ui inverted header">About</h4>
+                  <div className="ui inverted link list">
+                    <div class="item">Education</div>
+                    <div class="item">Teachnology</div>
+                    <div class="item"></div>
+                    <div class="item">Diversity</div>
                   </div>
                 </div>
-                <div class="three wide column">
-                  <h4 class="ui inverted header">Services</h4>
-                  <div class="ui inverted link list">
-                    <a href="/#" class="item">
-                      Banana Pre-Order
-                    </a>
-                    <a href="/#" class="item">
-                      DNA FAQ
-                    </a>
-                    <a href="/#" class="item">
-                      How To Access
-                    </a>
-                    <a href="/#" class="item">
-                      Favorite X-Men
-                    </a>
+                <div className="three wide column">
+                  <h4 className="ui inverted header">Services</h4>
+                  <div className="ui inverted link list">
+                    <div className="item">Resources</div>
+                    <div className="item">FAQ</div>
+                    <div className="item">How To Access</div>
+                    <div href="/#" className="item">
+                      Doubts
+                    </div>
                   </div>
                 </div>
-                <div class="seven wide column">
-                  <h4 class="ui inverted header">Footer Header</h4>
-                  <p>
-                    Extra space for a call to action inside the footer that
-                    could help re-engage users.
-                  </p>
+                <div className="seven wide column">
+                  <h4 className="ui inverted header">Footer Header</h4>
+                  <p>Focus on learning wins</p>
                 </div>
               </div>
             </div>
@@ -175,9 +155,9 @@ class DashBoard extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     auth: state.firebase.auth,
-//   };
-// };
-export default DashBoard;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+export default connect(mapStateToProps)(DashBoard);
