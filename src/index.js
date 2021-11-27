@@ -7,11 +7,10 @@ import rootReducer from "./reducers/rootReducer";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { reduxFireStore, getFirestore } from "redux-firestore";
-//import { reduxFireStore, getFirestore } from "redux-firestore";
-//import { getFirestore } from "redux-firestore";
+
 import { getFirebase } from "react-redux-firebase";
 import firebaseConfig from "./config/firebaseConfig";
-// import firebase from "firebase/app";
+
 import firebase from "firebase/compat/app";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import { createFirestoreInstance } from "redux-firestore";
@@ -25,51 +24,6 @@ function AuthIsLoaded({ children }) {
   return children;
 }
 
-// const store = createStore(
-//   rootReducer,
-//   compose(
-//     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-//     reduxFireStore(firebaseConfig),
-//     reactReduxFirebase(firebaseConfig)
-//   )
-// );
-
-// const store = createStore(
-//   rootReducer,
-//   compose(
-//     applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
-//     reduxFireStore(firebase, firebaseConfig)
-//   )
-// );
-
-// const store = createStore(
-//   rootReducer,
-//
-//   compose(
-//     applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
-//     reduxFireStore(firebase)
-//   )
-// );
-
-//--------------------------------------------------------------------------------------------------------------
-
-// const store = createStore(
-//   rootReducer,
-//   applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase }))
-// );
-
-//--------------------------------------------------------------------------------------------------------------
-
-// const store = createStore(
-//   rootReducer,
-//   compose(
-//     applyMiddleware(
-//       thunk.withExtraArgument({ getFirebase, getFirestore }),
-//       reactReduxFirebase(firebase, firebaseConfig),
-//       reduxFireStore(firebase)
-//     )
-//   )
-// );
 const initialState = {};
 const store = createStore(
   rootReducer,
@@ -97,7 +51,7 @@ const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance, // <- needed if using firestore
+  createFirestoreInstance,
 };
 ReactDOM.render(
   <Provider store={store}>

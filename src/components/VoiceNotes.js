@@ -60,17 +60,6 @@ function VoiceNotes(props) {
   };
 
   const jsPdfGenerate = () => {
-    // var doc = new jsPDF("p", "pt");
-    // const s = "hello there";
-    // doc.text(20, 30, s);
-    // doc.save("notes.pdf");
-    // var i = 1;
-    // var str = "";
-    // savedNotes.map((s) => {
-    //   setContent(...content, s + "\n");
-    //   console.log(s);
-    // });
-    // //console.log(str);
     var doc = new jsPDF("p", "pt");
     // const s = "hello there";
     doc.text(20, 30, savedNotes, { maxWidth: 400 });

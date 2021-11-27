@@ -52,7 +52,9 @@ class SignUp extends React.Component {
               <div className="field">
                 <div className="two fields">
                   <div className="field">
-                    <label>First Name</label>
+                    <label>
+                      <h5>First Name</h5>
+                    </label>
                     <input
                       type="text"
                       name="shipping[first-name]"
@@ -63,7 +65,9 @@ class SignUp extends React.Component {
                     />
                   </div>
                   <div className="field">
-                    <label>Last Name</label>
+                    <label>
+                      <h5>Last Name</h5>
+                    </label>
                     <input
                       type="text"
                       name="shipping[last-name]"
@@ -75,14 +79,18 @@ class SignUp extends React.Component {
                   </div>
                 </div>
                 <div className="field">
-                  <label>Email ID</label>
+                  <label>
+                    <h5>Email ID</h5>
+                  </label>
                   <input
                     type="text"
                     onChange={(e) => this.setState({ email: e.target.value })}
                   />
                 </div>
                 <div className="field">
-                  <label>Password</label>
+                  <label>
+                    <h5>Password</h5>
+                  </label>
 
                   <input
                     type="password"

@@ -1,8 +1,8 @@
 import React from "react";
-//mport { getFirebase } from "react-redux-firebase";
+
 import { getFirestore } from "redux-firestore";
 import { connect } from "react-redux";
-import avatar from "../avatar.png";
+
 import moment from "moment";
 
 class DoubtPortal extends React.Component {
@@ -31,8 +31,6 @@ class DoubtPortal extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-
-    //console.log(list);
   };
 
   renderQrCodes = () => {

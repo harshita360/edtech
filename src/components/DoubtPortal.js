@@ -41,12 +41,6 @@ class DoubtPortal extends React.Component {
 
     //console.log(list);
   };
-  // const response=db.collection('doubts');
-  // const data=await response.get();
-  // console.log(data);
-  // // data.docs.forEach(item=>{
-  // //  setBlogs([...blogs,item.data()])
-  // // })
 
   postDoubt = () => {
     if (this.state.doubt === "") alert("You Have to Enter your Doubt");
