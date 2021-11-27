@@ -1,0 +1,12 @@
+--> The signup should be done by credentials with format username@student.com for students
+The Signup should be done by credentials with format username@teacher.com for teachers.
+Some examples of already existing students and teachers with credentials are:
+Email : shriya@teacher.com   
+Password : shriya123
+
+Email : shaw.ayushi@student.com
+Password: ayushi123
+
+-->Internet connection is required for smooth functioning of the web application.
+
+-->
