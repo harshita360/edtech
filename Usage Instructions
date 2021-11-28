@@ -1,5 +1,8 @@
 The project is deployed at : https://engage-edtech.web.app/
 
+
+--> To run the project on localhost,clone the project and install the dependencies with npm install. Run the project using npm run start.
+
 --> The signup should be done by credentials with format username@student.com for students
 --> The Signup should be done by credentials with format username@teacher.com for teachers.
 Some examples of already existing students and teachers with credentials are:
@@ -11,14 +14,9 @@ Password: ayushi123
 
 -->Internet connection is required for smooth functioning of the web application.
 
--->For running the project on localhost, the firebase credentials must be changed in the config/firebaseConfig folder with the your own firebase credentials.
-const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: "",
-  measurementId: "",
-};
-The above configurations must be set according to the user's firebase console credentials.
+--> For smooth functioning of the Record and Save keep in mind the steps: 
+    1)Click on "start/stop" button to start recording
+    2)Then click "start/stop" to stop recording
+    3)Then click on save.
+    4)Repeat the above steps to create more notes.
+    
